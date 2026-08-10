@@ -1,6 +1,6 @@
 [package]
 name = "blank-website"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Edward <securedbread@protonmail.com>"]
 edition = "2021"
 
