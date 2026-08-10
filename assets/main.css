@@ -510,14 +510,46 @@ h1, h2, h3, .window-title {
 }
 
 /* ----------------------------------------------------------------------------
-   MOBILE RESPONSIVENESS (Phones < 600px)
-   Tablets (>600px) retain the desktop drag-and-drop OS paradigm.
+   TABLET & MOBILE RESPONSIVENESS
 ---------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Give the desktop grid a dock-like feel at bottom on touch devices */
+  .desktop-grid {
+    position: fixed;
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 1rem 0.5rem;
+    justify-content: center;
+    z-index: 999; /* Sit on top of all windows like iPad OS */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1.5rem;
+  }
+  
+  /* Hide footer on mobile/tablet to save space for dock */
+  .desktop-footer {
+    display: none;
+  }
+  
+  /* Modal padding adjustment */
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 600px) {
   /* Auto-maximize windows on phones */
   .os-window {
     width: 100vw !important;
-    height: 100vh !important;
+    height: calc(100dvh - 110px) !important; /* Leave space for bottom dock */
     top: 0 !important;
     left: 0 !important;
     border-radius: 0;
@@ -564,35 +596,6 @@ h1, h2, h3, .window-title {
   
   .settings-body {
     padding: 1rem;
-  }
-  
-  /* Adjust modal width */
-  .modal-content {
-    width: 95%;
-    padding: 1.5rem;
-  }
-  
-  /* Give the desktop grid a dock-like feel at bottom on very small screens */
-  .desktop-grid {
-    flex-direction: row;
-    top: auto;
-    bottom: 0;
-    height: auto;
-    width: 100vw;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 1rem 0.5rem;
-    justify-content: space-around;
-    z-index: 50; /* Above wallpaper, below windows */
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem;
-  }
-  
-  /* Hide footer on mobile to save space for dock */
-  .desktop-footer {
-    display: none;
   }
 }
 
